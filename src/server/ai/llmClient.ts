@@ -23,7 +23,7 @@ export async function generateAIResponse(prompt: string): Promise<string> {
 
   try {
     const model = genAI.getGenerativeModel({
-      model: process.env.GEMINI_MODEL_NAME || "gemini-1.5-pro",
+      model: process.env.GEMINI_MODEL_NAME || "gemini-pro",
     });
 
     const result = await model.generateContent(prompt);

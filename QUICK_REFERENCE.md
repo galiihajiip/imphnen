@@ -51,7 +51,7 @@ npm run verify
 
 ```env
 GEMINI_API_KEY="your-api-key-here"
-GEMINI_MODEL_NAME="gemini-1.5-pro"
+GEMINI_MODEL_NAME="gemini-pro"
 DATABASE_URL="file:./dev.db"
 ```
 

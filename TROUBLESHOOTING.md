@@ -69,10 +69,11 @@ GEMINI_MODEL_NAME="gemini-1.5-flash"
 GEMINI_MODEL_NAME="gemini-pro"
 ```
 
-**Model yang tersedia** (per Desember 2024):
-- `gemini-1.5-pro` - Recommended (paling pintar)
-- `gemini-1.5-flash` - Lebih cepat, lebih murah
-- `gemini-pro` - Model lama (deprecated)
+**Model yang tersedia**:
+- `gemini-pro` - Stable, recommended
+- `gemini-1.5-flash-latest` - Faster (if available in your region)
+
+**Note**: Model availability depends on your API version and region. Use `gemini-pro` for maximum compatibility.
 
 ---
 
