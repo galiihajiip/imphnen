@@ -9,14 +9,14 @@ interface SectionCardProps {
 
 export function SectionCard({ title, description, children, className = "" }: SectionCardProps) {
   return (
-    <div className={`bg-slate-900/90 border border-slate-800 rounded-2xl p-6 ${className}`}>
+    <div className={`bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-6 ${className}`}>
       {(title || description) && (
         <div className="mb-4">
           {title && (
-            <h2 className="text-lg font-semibold text-gray-200">{title}</h2>
+            <h2 className="text-base sm:text-lg font-semibold text-gray-200">{title}</h2>
           )}
           {description && (
-            <p className="mt-1 text-sm text-gray-400">{description}</p>
+            <p className="mt-1 text-xs sm:text-sm text-gray-400">{description}</p>
           )}
         </div>
       )}
