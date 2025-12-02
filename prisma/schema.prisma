@@ -31,3 +31,24 @@ model PricingDecision {
   adviceText        String
   createdAt         DateTime @default(now())
 }
+
+model DailySummary {
+  id                String   @id @default(cuid())
+  date              DateTime @unique
+  totalSales        Float
+  totalCogs         Float
+  operationalCost   Float
+  profit            Float
+  marginPercent     Float
+  createdAt         DateTime @default(now())
+}
+
+model Product {
+  id                String   @id @default(cuid())
+  name              String
+  category          String?
+  costPerUnit       Float
+  pricePerUnit      Float
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

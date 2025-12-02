@@ -6,6 +6,10 @@
 
 @layer base {
   body {
-    @apply bg-background text-gray-200 font-sans antialiased;
+    @apply bg-slate-950 text-gray-200 font-sans antialiased;
+  }
+  
+  * {
+    @apply transition-colors duration-150;
   }
 }

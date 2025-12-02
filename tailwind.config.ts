@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0B1120",
-        surface: "#111827",
-        input: "#1F2937",
-        primary: "#22C55E",
-        warning: "#F59E0B",
-        danger: "#EF4444",
-        border: "#374151",
+        background: "#020617",
+        surface: "#0f172a",
+        input: "#1e293b",
+        primary: "#10b981",
+        warning: "#f59e0b",
+        danger: "#ef4444",
+        border: "#334155",
       },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
