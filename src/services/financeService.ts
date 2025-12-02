@@ -36,17 +36,22 @@ export async function analyzeProfitWithAI(
   const prompt = buildProfitInsightPrompt(input, result);
   const insightText = await generateAIResponse(prompt);
 
-  // Step 3: Save to database
-  await prisma.profitAnalysis.create({
-    data: {
-      salesTotal: input.salesTotal,
-      cogsTotal: input.cogsTotal,
-      operationalCost: input.operationalCost,
-      profit: result.profit,
-      profitMargin: result.profitMargin,
-      insightText,
-    },
-  });
+  // Step 3: Save to database (optional for demo)
+  try {
+    await prisma.profitAnalysis.create({
+      data: {
+        salesTotal: input.salesTotal,
+        cogsTotal: input.cogsTotal,
+        operationalCost: input.operationalCost,
+        profit: result.profit,
+        profitMargin: result.profitMargin,
+        insightText,
+      },
+    });
+  } catch (error) {
+    // Continue without database for demo purposes
+    console.warn("Database write skipped:", error);
+  }
 
   return {
     profit: result.profit,
@@ -66,18 +71,23 @@ export async function generatePricingAdviceWithAI(
   const prompt = buildPricingAdvicePrompt(input, result);
   const adviceText = await generateAIResponse(prompt);
 
-  // Step 3: Save to database
-  await prisma.pricingDecision.create({
-    data: {
-      productName: input.productName,
-      costPerUnit: input.costPerUnit,
-      currentPrice: input.currentPrice,
-      desiredMarginMin: input.desiredMarginMin,
-      desiredMarginMax: input.desiredMarginMax,
-      suggestedPrices: JSON.stringify(result.suggestedPrices),
-      adviceText,
-    },
-  });
+  // Step 3: Save to database (optional for demo)
+  try {
+    await prisma.pricingDecision.create({
+      data: {
+        productName: input.productName,
+        costPerUnit: input.costPerUnit,
+        currentPrice: input.currentPrice,
+        desiredMarginMin: input.desiredMarginMin,
+        desiredMarginMax: input.desiredMarginMax,
+        suggestedPrices: JSON.stringify(result.suggestedPrices),
+        adviceText,
+      },
+    });
+  } catch (error) {
+    // Continue without database for demo purposes
+    console.warn("Database write skipped:", error);
+  }
 
   return {
     currentMargin: result.currentMargin,
