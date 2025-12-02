@@ -20,17 +20,26 @@ if (!API_KEY) {
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 
-// Models to test
+// Models to test (including Gemini 2.0 and experimental models)
 const modelsToTest = [
+  // Gemini 2.0 (Latest - December 2024)
+  "gemini-2.0-flash-exp",
+  "gemini-exp-1206",
+  "gemini-exp-1121",
+  
+  // Gemini 1.5 (Stable)
   "gemini-1.5-flash-latest",
   "gemini-1.5-pro-latest",
   "gemini-1.5-flash",
   "gemini-1.5-pro",
+  
+  // Legacy
   "gemini-pro",
+  
+  // With models/ prefix
+  "models/gemini-2.0-flash-exp",
   "models/gemini-1.5-flash-latest",
   "models/gemini-1.5-pro-latest",
-  "models/gemini-1.5-flash",
-  "models/gemini-1.5-pro",
 ];
 
 async function testModel(modelName) {

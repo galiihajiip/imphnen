@@ -23,8 +23,8 @@ export async function generateAIResponse(prompt: string): Promise<string> {
 
   try {
     // Try different model names based on SDK version
-    // For SDK 0.21.0, use models without version prefix
-    const modelName = process.env.GEMINI_MODEL_NAME || "gemini-1.5-flash-latest";
+    // Default to Gemini 2.0 Flash (latest experimental model)
+    const modelName = process.env.GEMINI_MODEL_NAME || "gemini-2.0-flash-exp";
     
     console.log("Attempting to use model:", modelName);
     
