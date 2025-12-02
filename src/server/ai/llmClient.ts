@@ -22,9 +22,11 @@ export async function generateAIResponse(prompt: string): Promise<string> {
   }
 
   try {
-    // Use the correct model name for v1 API
-    // Available models: gemini-1.5-flash, gemini-1.5-pro (without -latest suffix)
-    const modelName = process.env.GEMINI_MODEL_NAME || "gemini-1.5-flash";
+    // Try different model names based on SDK version
+    // For SDK 0.21.0, use models without version prefix
+    const modelName = process.env.GEMINI_MODEL_NAME || "gemini-1.5-flash-latest";
+    
+    console.log("Attempting to use model:", modelName);
     
     const model = genAI.getGenerativeModel({
       model: modelName,
