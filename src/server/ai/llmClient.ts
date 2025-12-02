@@ -22,8 +22,12 @@ export async function generateAIResponse(prompt: string): Promise<string> {
   }
 
   try {
+    // Use the correct model name for v1 API
+    // Available models: gemini-1.5-flash, gemini-1.5-pro (without -latest suffix)
+    const modelName = process.env.GEMINI_MODEL_NAME || "gemini-1.5-flash";
+    
     const model = genAI.getGenerativeModel({
-      model: process.env.GEMINI_MODEL_NAME || "gemini-pro",
+      model: modelName,
     });
 
     const result = await model.generateContent(prompt);

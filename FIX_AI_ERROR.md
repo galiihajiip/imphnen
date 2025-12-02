@@ -36,7 +36,7 @@ Buka file `.env` dan paste API key Anda:
 
 ```env
 GEMINI_API_KEY="AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-GEMINI_MODEL_NAME="gemini-pro"
+GEMINI_MODEL_NAME="gemini-1.5-flash"
 DATABASE_URL="file:./dev.db"
 ```
 
@@ -143,7 +143,9 @@ npm run dev
 
 **Solusi**: Edit .env, gunakan:
 ```env
-GEMINI_MODEL_NAME="gemini-pro"          # Recommended (stable)
+GEMINI_MODEL_NAME="gemini-1.5-flash"    # Fast (recommended)
+# atau
+GEMINI_MODEL_NAME="gemini-1.5-pro"      # More capable
 ```
 
 ---

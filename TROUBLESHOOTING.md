@@ -69,11 +69,11 @@ GEMINI_MODEL_NAME="gemini-1.5-flash"
 GEMINI_MODEL_NAME="gemini-pro"
 ```
 
-**Model yang tersedia**:
-- `gemini-pro` - Stable, recommended
-- `gemini-1.5-flash-latest` - Faster (if available in your region)
+**Model yang tersedia** (untuk v1 API):
+- `gemini-1.5-flash` - Fast and efficient (recommended)
+- `gemini-1.5-pro` - More capable, slower
 
-**Note**: Model availability depends on your API version and region. Use `gemini-pro` for maximum compatibility.
+**Note**: Jangan gunakan suffix `-latest`. Model availability depends on your API key and region.
 
 ---
 

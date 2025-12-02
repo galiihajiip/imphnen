@@ -8,13 +8,18 @@
 
 ## ✅ Solution
 
-The model name `gemini-1.5-pro` is not available in the v1beta API version. Use `gemini-pro` instead.
+The old model names like `gemini-pro` are deprecated. Use the new model names without `-latest` suffix.
 
 ### Quick Fix
 
 1. **Edit your `.env` file**:
    ```env
-   GEMINI_MODEL_NAME="gemini-pro"
+   GEMINI_MODEL_NAME="gemini-1.5-flash"
+   ```
+   
+   Or for more capable model:
+   ```env
+   GEMINI_MODEL_NAME="gemini-1.5-pro"
    ```
 
 2. **Restart your development server**:
@@ -29,17 +34,22 @@ The model name `gemini-1.5-pro` is not available in the v1beta API version. Use 
 
 ## 📋 Correct Model Names
 
-Use one of these stable model names:
+Use one of these model names (WITHOUT `-latest` suffix):
 
-### Recommended (Most Compatible)
+### Recommended (Fast & Efficient)
 ```env
-GEMINI_MODEL_NAME="gemini-pro"
+GEMINI_MODEL_NAME="gemini-1.5-flash"
 ```
 
-### Alternative (If Available in Your Region)
+### Alternative (More Capable)
 ```env
-GEMINI_MODEL_NAME="gemini-1.5-flash-latest"
+GEMINI_MODEL_NAME="gemini-1.5-pro"
 ```
+
+### ❌ DO NOT USE:
+- `gemini-pro` (deprecated)
+- `gemini-1.5-flash-latest` (not supported in SDK)
+- `gemini-1.5-pro-latest` (not supported in SDK)
 
 ---
 
@@ -59,7 +69,7 @@ Your `.env` file should look like this:
 ```env
 # Gemini API Configuration
 GEMINI_API_KEY="AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-GEMINI_MODEL_NAME="gemini-pro"
+GEMINI_MODEL_NAME="gemini-1.5-flash"
 
 # Database
 DATABASE_URL="file:./dev.db"
@@ -84,7 +94,7 @@ async function test() {
       model: process.env.GEMINI_MODEL_NAME || "gemini-pro" 
     });
     
-    console.log("Testing model:", process.env.GEMINI_MODEL_NAME);
+    console.log("Testing model:", process.env.GEMINI_MODEL_NAME || "gemini-1.5-flash");
     const result = await model.generateContent("Say hello in Indonesian");
     console.log("✅ Success!");
     console.log("Response:", result.response.text());
@@ -108,7 +118,7 @@ rm test-model.js
 
 **Expected output**:
 ```
-Testing model: gemini-pro
+Testing model: gemini-1.5-flash
 ✅ Success!
 Response: Halo! Ada yang bisa saya bantu?
 ```
@@ -119,13 +129,14 @@ Response: Halo! Ada yang bisa saya bantu?
 
 Model availability depends on your location:
 
-| Model | Availability |
-|-------|-------------|
-| `gemini-pro` | ✅ Global (most stable) |
-| `gemini-1.5-flash-latest` | ⚠️ Limited regions |
-| `gemini-1.5-pro` | ❌ Not in v1beta API |
+| Model | Availability | Speed | Capability |
+|-------|-------------|-------|------------|
+| `gemini-1.5-flash` | ✅ Global | Fast | Good |
+| `gemini-1.5-pro` | ✅ Global | Slower | Better |
+| `gemini-pro` | ❌ Deprecated | - | - |
+| `*-latest` suffix | ❌ Not supported | - | - |
 
-**Recommendation**: Always use `gemini-pro` for maximum compatibility.
+**Recommendation**: Use `gemini-1.5-flash` for best balance of speed and quality.
 
 ---
 
@@ -137,7 +148,7 @@ When deploying to Vercel:
 2. **Settings → Environment Variables**
 3. **Add**:
    - Key: `GEMINI_MODEL_NAME`
-   - Value: `gemini-pro`
+   - Value: `gemini-1.5-flash`
    - Environment: All (Production, Preview, Development)
 4. **Redeploy**
 
@@ -155,7 +166,7 @@ When deploying to Vercel:
 
 After applying the fix:
 
-- [ ] `.env` file has `GEMINI_MODEL_NAME="gemini-pro"`
+- [ ] `.env` file has `GEMINI_MODEL_NAME="gemini-1.5-flash"` or `"gemini-1.5-pro"`
 - [ ] Development server restarted
 - [ ] Test script runs successfully
 - [ ] App works in browser
@@ -165,9 +176,11 @@ After applying the fix:
 
 ## 💡 Pro Tips
 
-1. **Don't use model names with version numbers** in v1beta API
-   - ❌ `gemini-1.5-pro`
-   - ✅ `gemini-pro`
+1. **Don't use `-latest` suffix or deprecated models**
+   - ❌ `gemini-pro` (deprecated)
+   - ❌ `gemini-1.5-flash-latest` (not supported)
+   - ✅ `gemini-1.5-flash` (correct)
+   - ✅ `gemini-1.5-pro` (correct)
 
 2. **Check Google AI Studio** for available models:
    - Visit: https://makersuite.google.com/
@@ -194,4 +207,6 @@ If you still get errors after using `gemini-pro`:
 
 **This fix has been applied to the codebase and all documentation has been updated.**
 
-**Default model is now: `gemini-pro`** ✅
+**Default model is now: `gemini-1.5-flash`** ✅
+
+**Last updated**: December 2024 - Using latest Gemini API model names

@@ -32,7 +32,7 @@ Your code is ready! Vercel should now build successfully.
 2. Add environment variable in Vercel:
    ```
    GEMINI_API_KEY=your-actual-api-key
-   GEMINI_MODEL_NAME=gemini-pro
+   GEMINI_MODEL_NAME=gemini-1.5-flash
    ```
 3. Done! App will work without database persistence ✅
 
