@@ -1,0 +1,33 @@
+// Prisma Schema for AI Financial Co-Pilot UMKM
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ProfitAnalysis {
+  id                String   @id @default(cuid())
+  salesTotal        Float
+  cogsTotal         Float
+  operationalCost   Float
+  profit            Float
+  profitMargin      Float
+  insightText       String
+  createdAt         DateTime @default(now())
+}
+
+model PricingDecision {
+  id                String   @id @default(cuid())
+  productName       String
+  costPerUnit       Float
+  currentPrice      Float
+  desiredMarginMin  Float
+  desiredMarginMax  Float
+  suggestedPrices   String   // JSON string
+  adviceText        String
+  createdAt         DateTime @default(now())
+}
